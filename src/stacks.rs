@@ -1,22 +1,22 @@
 #[derive(Debug)]
-struct Stack<T> {
+pub struct Stacks<T> {
     top: usize,   // stack top index
     data: Vec<T>, // stack data
 }
 
-impl<T> Stack<T> {
+impl<T> Stacks<T> {
     // return a new init empty stack
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             top: 0,
             data: Vec::new(),
         }
     }
-    fn push(&mut self, value: T) {
+    pub fn push(&mut self, value: T) {
         self.data.push(value); // data will be at the end of the vector
         self.top += 1;
     }
-    fn pop(&mut self) -> Option<T> {
+    pub fn pop(&mut self) -> Option<T> {
         if self.top == 0 {
             None
         } else {
@@ -24,17 +24,33 @@ impl<T> Stack<T> {
             self.data.pop() // pop the last element
         }
     }
-    fn pick(&self) -> Option<&T> {
+    pub fn peak(&self) -> Option<&T> {
         if self.top == 0 {
             None
         } else {
             self.data.get(self.top - 1) // ref to the top element not ownership
         }
     }
-    fn is_empty(&self) -> bool {
+    pub fn is_empty(&self) -> bool {
         self.top == 0
     }
-    fn size(&self) -> usize {
+    pub fn size(&self) -> usize {
         self.top
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn it_works() {
+        let mut stack = Stacks::new();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        println!("top: {:?}", stack.peak().unwrap());
+        println!("size: {}", stack.size());
+        println!("pop: {:?}, size: {:?}", stack.pop(), stack.size());
+        println!("is_empty: {}", stack.is_empty());
     }
 }
