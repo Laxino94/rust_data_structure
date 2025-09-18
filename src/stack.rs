@@ -1,10 +1,10 @@
 #[derive(Debug)]
-pub struct Stacks<T> {
+pub struct Stack<T> {
     top: usize,   // stack top index
     data: Vec<T>, // stack data
 }
 
-impl<T> Stacks<T> {
+impl<T> Stack<T> {
     // return a new init empty stack
     pub fn new() -> Self {
         Self {
@@ -44,7 +44,7 @@ mod tests {
     use super::*;
     #[test]
     fn it_works() {
-        let mut stack = Stacks::new();
+        let mut stack = Stack::new();
         stack.push(1);
         stack.push(2);
         stack.push(3);

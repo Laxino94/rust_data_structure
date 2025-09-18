@@ -1,2 +1,3 @@
+mod deque;
 mod queue;
-mod stacks;
+mod stack;

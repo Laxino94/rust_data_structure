@@ -1,6 +1,6 @@
 mod deque;
 mod queue;
-mod stacks;
+mod stack;
 fn main() {}
 #[cfg(test)]
 mod tests {
