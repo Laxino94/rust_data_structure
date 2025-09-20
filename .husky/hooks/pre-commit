@@ -1,0 +1,11 @@
+#!/bin/sh
+echo "Running pre-commit hook"
+
+echo "▶ Running cargo fmt check..."
+cargo fmt -- --check || exit 1
+
+echo "▶ Running cargo clippy..."
+cargo clippy -- -D warnings || exit 1
+
+echo "▶ Running cargo test..."
+cargo test --quiet || exit 1
